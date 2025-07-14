@@ -1,6 +1,6 @@
 # EliteBallKnowledge
 
-Hey wsg!
+Hey wsg Chat!
 
 This is my Elite Ball Knowledge Translator. Starting with Gen Z and accelerating in Gen Alpha, internet language is constantly evolving at a rapid pace.
 A lot of terminology (or as some might call it, "Elite Ball Knowledge") is required to fully understand day-to-day conversations nowadays.
