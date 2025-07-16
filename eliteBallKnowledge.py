@@ -1,3 +1,4 @@
+from gpt_request import expand_sentence
 import re
 import json
 
@@ -5,9 +6,9 @@ def main():
     print("Welcome to Elite Ball Knowledge!")
     userInput = getInput()
     substitution = findMatch(userInput)
-    print(substitution)
-    #expanded = expand_sentence(userInput)
-    #print("\n Rephrased in a professional tone: \n", expanded)
+    print("\n Your original phrase: \n", substitution)
+    expanded = expand_sentence(substitution)
+    print("\n Rephrased in a professional tone: \n", expanded)
 
 
 def getInput():
