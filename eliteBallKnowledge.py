@@ -26,10 +26,12 @@ def normalizeInput(input_text):
     return text
     
 
-with open("slangDictionary.json", "r") as f:
-    word_dict = json.load(f)
+def load_dictionary():
+    with open("slangDictionary.json", "r") as f:
+        return json.load(f)
 
 def findMatch(input_text):
+    word_dict = load_dictionary()
     normalized_text = normalizeInput(input_text)
     print("Normalized input:", normalized_text)
     
