@@ -33,12 +33,9 @@
   display: grid;
   padding: var(--dl-layout-space-oneandhalfunits);
   grid-gap: var(--dl-layout-space-halfunit);
-  position: absolute;
-  
-  
- 
+  position: relative;
   grid-template-columns: 1fr 1fr;
-  animation-iteration-count: 1;
+  
   
 }
  
