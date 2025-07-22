@@ -27,21 +27,16 @@
 }
  
 .navbar7-container2 {
-  top: 100px;
+  top: 0px;
   left: 0px;
   width: 100%;
   display: grid;
   padding: var(--dl-layout-space-oneandhalfunits);
   grid-gap: var(--dl-layout-space-halfunit);
   position: absolute;
-  animation-name: fadeInDownBig;
-  animation-delay: 0s;
-  background-color: var(--dl-color-theme-neutral-light);
-  animation-duration: 300ms;
-  animation-direction: normal;
+
   grid-template-columns: 1fr 1fr;
-  animation-iteration-count: 1;
-  animation-timing-function: ease;
+  
 }
  
 .navbar7-menu-item1 {
