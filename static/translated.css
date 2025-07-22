@@ -1061,3 +1061,10 @@
     padding-bottom: 45px;
   }
 }
+
+html, body {
+  width: 100%;
+  zoom: 1;
+  transform: none;
+  max-width: 100%;
+}
