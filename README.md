@@ -16,4 +16,7 @@ __Features:__
 
 __So don't be an NPC and have a W Vibe Check on my peak project, so you don't gotta hellyante around the internet like a cooked mango 🥭 anymore!__
 
+The website is currently powered by RENDER for free. My free instance will spin down with inactivity, which can delay requests by 50 seconds or more.
+Check it out under https://eliteballknowledge.onrender.com
+
 __Have questions, ideas, or slang to add? Feel free to email me! :P__
