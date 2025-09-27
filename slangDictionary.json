@@ -13,7 +13,7 @@
     "sleeper": "underrated but with potential",
     "tank": "intentionally taking blows",
     "banger": "amazing or exciting",
-    "goat": "greates of all time",
+    "goat": "greatest of all time",
     "stat padding": "chasing numbers that don’t impact the overall outcome",
     "tank commander": "the face of a team that keeps losing on purpose",
     "franchise player": "centerpiece of the entire operation",
@@ -158,6 +158,8 @@
     "swag":"cool appeareance",
     "aura":"appeareance",
     "gooning": "wasting time masturbating",
+    "gooner": "time waster by masturbating",
+    "goon": "wasting time masturbating",
     "ragebaiting": "enraging",
     "ragebait": "infuriating",
     "game": "charisma",
@@ -203,6 +205,7 @@
     "to lock in" : "get serious",
     "lock in" : "get serious already",
     "mewing" : "getting a visible jaw line",
+    "mew" : "getting a visible jaw line",
     "ong" : "on god",
     "tf": "what?",
     "on fleek": "awesome",
@@ -225,7 +228,17 @@
     "gotta": "have to",
     "gotta go": "have to leave",
     "gotta go fast": "have to leave quickly",
-    "gotta go brrr": "have to leave quickly"
+    "gotta go brrr": "have to leave quickly",
+    "o7": "salute",
+    "o7s": "salutes",
+    "vro": "bro",
+    "vors " : "bros",
+    "hellyante":"hell",
+    "hellyberry" :"hell",
+    "helliberry" :"hell",
+    "brochacho" : "bro",
+    "trippin" : "stupidly acting up"
+    
 
 }
   

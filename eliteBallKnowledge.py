@@ -17,6 +17,7 @@ def getInput():
     user_input = input("Please enter your query: ")
     return user_input
 
+
 def normalizeInput(input_text):
     text = re.sub(r"[_\-]+", " ", input_text)                     
     text = re.sub(r"([a-z])([A-Z])", r"\1 \2", text)  
@@ -24,11 +25,12 @@ def normalizeInput(input_text):
     text = text.lower()
     text = text.strip()                          
     return text
-    
+
 
 def load_dictionary():
     with open("slangDictionary.json", "r") as f:
         return json.load(f)
+
 
 def findMatch(input_text):
     word_dict = load_dictionary()
@@ -47,6 +49,7 @@ def findMatch(input_text):
         normalized_text = re.sub(pattern, replacement, normalized_text)
 
     return normalized_text
+
 
 if __name__ == "__main__":
     main()

@@ -1,27 +1,32 @@
-from flask import Flask, render_template, request
-from eliteBallKnowledge import findMatch
-from gpt_request import expand_sentence_butThreaded
-
-
+# app.py
+from flask import Flask, request, jsonify
+from flask_cors import CORS
+import eliteBallKnowledge  # Stelle sicher, dass dies existiert
+import gpt_request        # Stelle sicher, dass dies existiert
 
 app = Flask(__name__)
-
-
-@app.route("/")
-def index():
-    return render_template("index.html")
-
+CORS(app)
 
 @app.route("/translate", methods=["POST"])
 def translate():
-    user_input = request.form["textInput"]
+    try:
+        data = request.get_json()
+        user_input = data.get("textInput", "").strip()
 
-    substitution = findMatch(user_input)
+        if not user_input:
+            return jsonify({"error": "Empty input"}), 400
 
-    result = expand_sentence_butThreaded(substitution)
-    
-    return render_template("translated.html", original=user_input, translated=result)
+        # Verarbeite die Eingabe
+        substitution = eliteBallKnowledge.findMatch(user_input)
+        result = gpt_request.expand_sentence_butThreaded(substitution)
+
+        return jsonify({
+            "original": user_input,
+            "translated": result
+        })
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 if __name__ == "__main__":
-    app.run(debug=True)
-
+    app.run(debug=True, port=5001)

@@ -24,8 +24,8 @@ def expand_sentence(prompt_text, model, index):
     payload = {
         "model": model,
         "messages": [
-            {"role": "system", "content": "You are a formal writing assistant."},
-            {"role": "user", "content": f"Rephrase this sentence professionally and concisely: {prompt_text}"}
+            {"role": "system", "content": "You are a writing assistant."},
+            {"role": "user", "content": f"Summarize this sentence professionally using as few words as possible: {prompt_text}"}
         ],
         "temperature": 0.4,
         "max_tokens": 100
@@ -40,9 +40,32 @@ def expand_sentence(prompt_text, model, index):
     data = response.json()
     data = data["choices"][0]["message"]["content"].strip()
 
-    list[index] = data
-    return data
+    cleaned_data = clean_output(data)
+    
+    list[index] = cleaned_data
+    return cleaned_data
 
+def clean_output(text):
+    
+    # Entferne häufige Prompt-Tokens
+    unwanted_patterns = [
+        r'<s>', r'</s>', r'\[INST\]', r'\[/INST\]', 
+        r'\[OUT\]', r'\[/OUT\]', r'<\|.*?\|>',
+        r'^[^a-zA-Z0-9]*', r'[^a-zA-Z0-9\.!?]*$' 
+    ]
+    
+    cleaned_text = text
+    for pattern in unwanted_patterns:
+        cleaned_text = re.sub(pattern, '', cleaned_text)
+    
+    # Entferne überflüssige Leerzeichen und trimme
+    cleaned_text = ' '.join(cleaned_text.split()).strip()
+    
+    # Stelle sicher, dass der Text mit einem Buchstaben oder Zahl beginnt
+    if cleaned_text and not cleaned_text[0].isalnum():
+        cleaned_text = cleaned_text[1:].strip()
+    
+    return cleaned_text if cleaned_text else text 
 
 def expand_sentence_butThreaded(prompt_text):
 
