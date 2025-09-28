@@ -7,6 +7,15 @@ import gpt_request        # Stelle sicher, dass dies existiert
 app = Flask(__name__)
 CORS(app)
 
+@app.route("/")
+def home():
+    return {
+        "message": "EliteBallKnowledge API is running!",
+        "endpoints": {
+            "translate": "/translate (POST)"
+        }
+    }
+
 @app.route("/translate", methods=["POST"])
 def translate():
     try:

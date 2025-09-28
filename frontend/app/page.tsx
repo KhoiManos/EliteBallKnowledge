@@ -8,8 +8,6 @@ import { Label } from "./components/ui/label"
 import { useRouter } from "next/navigation"
 
 export default function LoginPage() {
-  const [showPassword, setShowPassword] = useState(false)
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
   const [currentView, setCurrentView] = useState<"login" | "register" | "forgot">("login")
   const [user_input, setUserInput] = useState("")
   const router = useRouter()
