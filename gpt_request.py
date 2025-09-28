@@ -7,7 +7,7 @@ import re
 
 load_dotenv()
 
-API_KEY = os.getenv("OPENROUTER_KEY_SECOND")
+API_KEY = os.getenv("THIRD_KEY")
 MODEL = "mistralai/mistral-7b-instruct:free"
 MODEL1 = "google/gemma-2-9b-it:free"
 list = [None, None] # To store results from both models
