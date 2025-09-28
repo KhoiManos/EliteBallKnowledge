@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 
 import requests
 import threading
+import re
 
 load_dotenv()
 
