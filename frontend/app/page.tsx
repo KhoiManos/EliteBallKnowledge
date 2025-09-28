@@ -25,11 +25,14 @@ export default function LoginPage() {
       body: JSON.stringify({ textInput: user_input }),
     });
 
-    if (!res.ok) throw new Error("Serverfehler");
+    if (!res.ok) {
+      const errorData = await res.json();
+      throw new Error(errorData.error || `Serverfehler: ${res.status}`);
+    }
 
     const data = await res.json();
     
-    // Prüfe auf Fehler von Flask
+    // Prüfe auf Fehler von der API
     if (data.error) {
       alert(`Fehler: ${data.error}`);
       return;
@@ -37,9 +40,10 @@ export default function LoginPage() {
 
     router.push(`/translate?original=${encodeURIComponent(data.original)}&translated=${encodeURIComponent(data.translated)}`)
   } catch (error) {
-    alert("Verbindungsfehler: Flask-Server läuft nicht?");
+    console.error("Fehler:", error);
+    alert(`Verbindungsfehler: ${error instanceof Error ? error.message : "Unbekannter Fehler"}`);
   }
-};
+  };
 
   return (
     <div className="min-h-screen flex font-sans">
