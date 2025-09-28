@@ -4,7 +4,7 @@ import { Label } from "../components/ui/label"
 import { Input } from "../components/ui/input"
 import { useSearchParams } from "next/navigation"
 
-export default function TranslatedPage() {
+export default function TranslateContent() {
 
   const searchParams = useSearchParams()
   const original = searchParams.get("original") || ""
