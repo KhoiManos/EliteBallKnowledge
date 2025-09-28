@@ -1,4 +1,4 @@
-import slangDictionary from '../../slangDictionary.json';
+import slangDictionary from './slangDictionary.json';
 
 export function normalizeInput(inputText: string): string {
   let text = inputText.replace(/[_-]+/g, ' ');
