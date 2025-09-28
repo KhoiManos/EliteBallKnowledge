@@ -1,6 +1,6 @@
 const API_KEY = process.env.OPENROUTER_API_KEY;
-
-const MODEL1 = "google/gemma-2-9b-it:free";
+const MODEL1 = "mistralai/mistral-7b-instruct:free";
+const MODEL2 = "google/gemma-2-9b-it:free";
 
 async function expandSentence(promptText: string, model: string): Promise<string> {
   const url = "https://openrouter.ai/api/v1/chat/completions";
@@ -60,13 +60,13 @@ function cleanOutput(text: string): string {
 
 export async function expandSentenceButThreaded(promptText: string): Promise<string> {
   try {
-    const [result1] = await Promise.all([
+    const [result1, result2] = await Promise.all([
       expandSentence(promptText, MODEL1),
-      
+      expandSentence(promptText, MODEL2)
     ]);
 
-    
-    return result1
+    // Return the first successful result, or the second if first is empty
+    return result1 || result2;
   } catch (error) {
     console.error("Error in expandSentenceButThreaded:", error);
     throw error;
