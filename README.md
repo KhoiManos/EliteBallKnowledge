@@ -21,7 +21,7 @@ Click here: https://eliteballknowledge.vercel.app/
 __Have questions, ideas, or slang to add? Feel free to email me! :P__
 
 
-## 📋 Prerequisites
+## Prerequisites
 
 Before running this project, make sure you have installed:
 
