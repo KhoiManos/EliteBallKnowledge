@@ -64,7 +64,7 @@ export default function LoginPage() {
 
           <div className="flex justify-between items-center text-white/70 text-sm">
             <span>
-              <a href="https://github.com/KhoiManos">Project under github.com/KhoiManos</a>
+              <a href="https://github.com/KhoiManos/EliteBallKnowledge">Project under github.com/KhoiManos</a>
             </span>
           </div>
         </div>
@@ -122,7 +122,7 @@ export default function LoginPage() {
               {currentView === "login" && (
                 <>
                   Have a look at the infrastructure under{" "}
-                  <a href="https://github.com/KhoiManos">github.com/KhoiManos</a>
+                  <a href="https://github.com/KhoiManos/EliteBallKnowledge">github.com/KhoiManos</a>
                 </>
               )}
             </div>
