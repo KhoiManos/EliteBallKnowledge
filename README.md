@@ -37,11 +37,8 @@ Before running this project, make sure you have installed:
 
 ## Frontend Setup (Next.js)
 
-1. Navigate to frontend directory
-   cd frontend
+1. Navigate to frontend directory – cd frontend
 
-2. Install dependenciesnpm
-   install
+2. Install dependenciesnpm – install
 
-3. Run development server
-   npm run dev
+3. Run development server – npm run dev
