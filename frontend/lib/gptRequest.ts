@@ -1,6 +1,6 @@
 const API_KEY = process.env.OPENROUTER_API_KEY;
-const MODEL1 = "mistralai/mistral-7b-instruct:free";
-const MODEL2 = "google/gemma-2-9b-it:free";
+const MODEL1 = "mistralai/mistral-small-24b-instruct-2501:free";
+const MODEL2 = "mistralai/mistral-7b-instruct:free";
 
 async function expandSentence(promptText: string, model: string): Promise<string> {
   const url = "https://openrouter.ai/api/v1/chat/completions";
@@ -15,12 +15,13 @@ async function expandSentence(promptText: string, model: string): Promise<string
   const payload = {
     "model": model,
     "messages": [
-      {"role": "system", "content": "You are a writing assistant."},
-      {"role": "user", "content": `Summarize this sentence professionally using as few words as possible: ${promptText}`}
+      {"role": "user", "content": `Rewrite this phrase into one concise and professional sentence, while keeping the core meaning: "${promptText}"`}
     ],
-    "temperature": 0.4,
-    "max_tokens": 100
+    "temperature": 0.7,  
+    "max_tokens": 80    
   };
+
+  console.log(`Calling OpenRouter API with model: ${model}`);
 
   const response = await fetch(url, {
     method: 'POST',
@@ -33,6 +34,7 @@ async function expandSentence(promptText: string, model: string): Promise<string
   }
 
   const data = await response.json();
+
   let text = data.choices[0].message.content.trim();
   return cleanOutput(text);
 }
@@ -59,16 +61,21 @@ function cleanOutput(text: string): string {
 }
 
 export async function expandSentenceButThreaded(promptText: string): Promise<string> {
-  try {
-    const [result1, result2] = await Promise.all([
-      expandSentence(promptText, MODEL1),
-      expandSentence(promptText, MODEL2)
-    ]);
+  console.log("API Key vorhanden:", !!API_KEY);
+  console.log("API Key Länge:", API_KEY?.length);
 
-    // Return the first successful result, or the second if first is empty
-    return result1 || result2;
+  try {
+    // Versuche zuerst MODEL1, falls das fehlschlägt, versuche MODEL2
+    try {
+      const result1 = await expandSentence(promptText, MODEL1);
+      return result1;
+    } catch (error1) {
+      console.log(`Model ${MODEL1} failed, trying ${MODEL2}:`, error1);
+      const result2 = await expandSentence(promptText, MODEL2);
+      return result2;
+    }
   } catch (error) {
-    console.error("Error in expandSentenceButThreaded:", error);
+    console.error("Both models failed in expandSentenceButThreaded:", error);
     throw error;
   }
 }
