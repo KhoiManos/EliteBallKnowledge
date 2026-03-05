@@ -1,6 +1,6 @@
 const API_KEY = process.env.OPENROUTER_API_KEY;
-const MODEL1 = "mistralai/mistral-small-24b-instruct-2501:free";
-const MODEL2 = "mistralai/mistral-7b-instruct:free";
+const MODEL1 = "google/gemma-3n-e2b-it:free";
+const MODEL2 = "google/gemma-3n-e4b-it:free";
 
 async function expandSentence(promptText: string, model: string): Promise<string> {
   const url = "https://openrouter.ai/api/v1/chat/completions";
@@ -15,7 +15,7 @@ async function expandSentence(promptText: string, model: string): Promise<string
   const payload = {
     "model": model,
     "messages": [
-      {"role": "user", "content": `Rewrite this phrase into one concise and professional sentence, while keeping the core meaning: "${promptText}"`}
+      {"role": "user", "content": `Rewrite this phrase into one concise and professional sentence, without giving me extra infromation: "${promptText}"`}
     ],
     "temperature": 0.7,  
     "max_tokens": 80    
