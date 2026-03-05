@@ -15,7 +15,7 @@ async function expandSentence(promptText: string, model: string): Promise<string
   const payload = {
     "model": model,
     "messages": [
-      {"role": "user", "content": `Rewrite this phrase into one concise and professional sentence, without giving me extra infromation: "${promptText}"`}
+      {"role": "user", "content": `Rewrite this phrase into one concise and professional sentence, without giving me extra infromation (keep it short): "${promptText}"`}
     ],
     "temperature": 0.7,  
     "max_tokens": 80    
